@@ -5,7 +5,7 @@ require("dotenv").config({path : "./config/.env"})
 require("./config/db")
 const {checkUser, requireAuth} = require(".middleware/auth.middleware")
 const cors = require("cors")
-const FansRoutes = require("./routes/fans.routes")
+const fansRoutes = require("./routes/fans.routes")
 const usersRoutes = require("./routes/users.routes")
 
 app.use(cors({origin: process.env.CLIENT_URL}))
@@ -32,7 +32,7 @@ app.get("jwtid", requireAuth, (res) => {
 })
 
 app.use("api/users", usersRoutes)
-app.use("api/fans", FansRoutes)
+app.use("api/fans", fansRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log(`On réceptionne sur ${process.env.PORT}`)
