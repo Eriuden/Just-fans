@@ -24,13 +24,13 @@ module.exports.signUpErrors = (err) => {
 }
 
 module.exports.signInErrors = (err) => {
-    let errors = {email:"", password:""}
+    let errors = {name:"", password:""}
 
     if (err.message.includes("name"))
     errors.name = "Nom inconnu"
 
     if (err.message.includes("password"))
-    errors.name = "Mot de passe inconnu"
+    errors.password = "Mot de passe inconnu"
 
     return errors
 }
