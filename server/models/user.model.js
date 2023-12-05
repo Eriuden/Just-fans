@@ -52,4 +52,4 @@ userSchema.static.login = async function(email, password) {
 }
 
 const userModel = mongoose.model("user", userSchema)
-module.export = userModel
+module.exports = userModel
