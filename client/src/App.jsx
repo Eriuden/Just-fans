@@ -1,33 +1,51 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import axios from "axios"
 import './App.css'
+import { Header } from './components/Header'
+import { Routes, Route } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { Home } from './pages/home'
+import { Connexion } from "./pages/connexion"
+import { Inscription } from "./pages/inscription"
+import { Searcher } from "./components/Searcher"
+import { useEffect } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [uid, setUid] = useState(null)
+  const dispatch = useDispatch()
+
+  useEffect(()=> {
+    const fetchToken = async () => {
+      await axios({
+        method: "get",
+        url: `${process.env.REACT_APP_API_URL}/jwtid`,
+        withCredentials: true
+      })
+      .then((res)=> {
+        console.log(res)
+        setUid(res.data)
+      })
+      .catch(()=> console.log("Pas de tokens"))
+    }
+    fetchToken()
+
+    if (uid) dispatch(getUser(uid))
+  }, [uid])
+  
+    
 
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <Header/>
+        <Searcher/>
+        <Routes>
+          <Route exact path={"/"} element={<Home/>}/>
+          <Route exact path={"/connexion"} element={<Connexion/>}/>
+          <Route exact path={"/inscription"} element={<Inscription/>}/>
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      
     </>
   )
 }
