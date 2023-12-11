@@ -15,6 +15,7 @@ export default function userReducer(state = initialState, action) {
         }
     case DELETE_USER:
         return state.filter((user)=> user._id !== action.payload.userId)
+        
     default:
         return state
   }
