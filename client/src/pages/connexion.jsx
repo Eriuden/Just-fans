@@ -7,7 +7,7 @@ export const Connexion = () => {
   const [password, setPassword] = useState("")
 
   const handleLogin = () => {
-    email.preventDefault()
+    e.preventDefault()
     const emailError = document.querySelector(".email.error")
     const passwordError = document.querySelector(".password.error")
 
