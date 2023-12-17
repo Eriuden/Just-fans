@@ -31,7 +31,7 @@ export const EditButton = (fanId) => {
                 />
 
                 <input
-                    type="tfile"
+                    type="file"
                     name="pics"
                     onChange={(e)=> setPics(e.target.value)}
                 />
