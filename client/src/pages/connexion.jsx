@@ -55,7 +55,7 @@ export const Connexion = () => {
 
       <input className='border-2 border black'
       type="password"
-      name='pasword'
+      name='password'
       id='password'
       onChange={(e)=> setPassword (e.target.value)}
       value={password}
