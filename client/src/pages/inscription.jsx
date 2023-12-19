@@ -76,7 +76,7 @@ export const Inscription = () => {
             
             <label htmlFor='password' className='my-2'>Votre mot de passe</label>
               <input className='border-2 border-black mx-12  md:mx-[30%]
-              lg:mx-[30%]' type="password" name='email' id='email' value={email} onChange={(e)=> setPassword(e.target.value)}/>
+              lg:mx-[30%]' type="password" name='password' id='password' value={password} onChange={(e)=> setPassword(e.target.value)}/>
             
             <label htmlFor='password-conf' className='my-2'>Confirmer votre mot de passe</label>
               <input className="border-2 border-black mx-12  md:mx-[30%]
